@@ -30,5 +30,5 @@ public class Product {
 
     private Integer maximumUnits;
 
-    private Supplier supplier;
+    private ProductSupplier productSupplier;
 }

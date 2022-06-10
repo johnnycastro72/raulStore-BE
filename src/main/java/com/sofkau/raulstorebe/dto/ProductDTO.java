@@ -1,6 +1,6 @@
 package com.sofkau.raulstorebe.dto;
 
-import com.sofkau.raulstorebe.collection.Supplier;
+import com.sofkau.raulstorebe.collection.ProductSupplier;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,5 +27,5 @@ public class ProductDTO {
 
     private Integer maximumUnits;
 
-    private Supplier supplier;
+    private ProductSupplier productSupplier;
 }

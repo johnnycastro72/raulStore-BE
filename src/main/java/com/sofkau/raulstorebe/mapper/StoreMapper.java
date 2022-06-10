@@ -16,13 +16,13 @@ import java.util.function.Function;
 public class StoreMapper {
     private static final ModelMapper modelMapper = new ModelMapper();
 
-    public Function<Supplier, SupplierDTO> toSupplierDTO() {
-        return supplier ->
-                modelMapper.map(supplier, SupplierDTO.class);
+    public Function<ProductSupplier, ProductSupplierDTO> toProductSupplierDTO() {
+        return productSupplier ->
+                modelMapper.map(productSupplier, ProductSupplierDTO.class);
     }
 
-    public Function<SupplierDTO, Supplier>  toSupplier() {
-        return supplierDTO -> modelMapper.map(supplierDTO, Supplier.class);
+    public Function<ProductSupplierDTO, ProductSupplier>  toProductSupplier() {
+        return productSupplierDTO -> modelMapper.map(productSupplierDTO, ProductSupplier.class);
     }
 
     public Function<Product, ProductDTO> toProductDTO() {

@@ -8,7 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -20,7 +19,7 @@ public class ReceiptNote {
 
     private String receiptNumber;
 
-    private Supplier supplier;
+    private ProductSupplier productSupplier;
 
     private LocalDateTime receiptDate;
 
