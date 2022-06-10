@@ -11,4 +11,5 @@ public interface IProductRepository extends ReactiveMongoRepository<Product, Str
     Flux<Product> findProductsByProductSupplier(ProductSupplier productSupplier);
     Flux<Product> findProductsByUnitsIsLessThanEqualAndMinimumUnits();
     Flux<Product> findProductsByMaximumUnitsIsGreaterThanAndMaximumUnits();
+    Flux<Product> findProductsByUnitsIsGreaterThan(Integer units);
 }

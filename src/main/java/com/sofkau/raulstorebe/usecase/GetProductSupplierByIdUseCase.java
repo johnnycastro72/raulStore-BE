@@ -10,12 +10,12 @@ import java.util.NoSuchElementException;
 import java.util.function.Function;
 
 @Service
-public class GetProductSupplierById implements Function<String, Mono<ProductSupplierDTO>> {
+public class GetProductSupplierByIdUseCase implements Function<String, Mono<ProductSupplierDTO>> {
 
     private IProductSupplierRepository iProductSupplierRepository;
     private StoreMapper storeMapper;
 
-    public GetProductSupplierById(IProductSupplierRepository iProductSupplierRepository, StoreMapper storeMapper) {
+    public GetProductSupplierByIdUseCase(IProductSupplierRepository iProductSupplierRepository, StoreMapper storeMapper) {
         this.iProductSupplierRepository = iProductSupplierRepository;
         this.storeMapper = storeMapper;
     }
