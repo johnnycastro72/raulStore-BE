@@ -11,7 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collection = "suppliers")
+@Document(collection = "productSuppliers")
 public class ProductSupplier {
     @Id
     private String id;

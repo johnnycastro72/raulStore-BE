@@ -22,5 +22,5 @@ public class ReceiptNoteDTO {
 
     private LocalDateTime receiptDate;
 
-    private List<ReceiptItem> items;
+    private List<ReceiptItemDTO> items;
 }

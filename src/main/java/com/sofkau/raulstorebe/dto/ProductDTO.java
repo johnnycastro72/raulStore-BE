@@ -27,5 +27,5 @@ public class ProductDTO {
 
     private Integer maximumUnits;
 
-    private ProductSupplier productSupplier;
+    private ProductSupplierDTO productSupplierDTO;
 }

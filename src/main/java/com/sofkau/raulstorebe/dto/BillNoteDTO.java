@@ -28,5 +28,5 @@ public class BillNoteDTO {
 
     private Double billTotal;
 
-    private List<BillItem> items;
+    private List<BillItemDTO> items;
 }
