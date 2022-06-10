@@ -23,7 +23,7 @@ public class CreateProductUseCase implements ICreateProduct {
     public Mono<ProductDTO> apply(@Valid ProductDTO productDTO) {
         return iProductRepository
                 .save(storeMapper.toProduct()
-                .apply(productDTO)).map(product -> storeMapper
+                        .apply(productDTO)).map(product -> storeMapper
                         .toProductDTO().apply(product));
     }
 }

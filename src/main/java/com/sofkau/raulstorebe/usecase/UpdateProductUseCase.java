@@ -21,7 +21,7 @@ public class UpdateProductUseCase implements IUpdateProduct {
                 .flatMap(product -> {
                     productDTO.setId(product.getId());
                     return iProductRepository.save(storeMapper.toProduct()
-                            .apply(productDTO))
+                                    .apply(productDTO))
                             .map(product1 -> storeMapper.toProductDTO().apply(product1));
                 })
                 .switchIfEmpty(Mono.just(new ProductDTO()));

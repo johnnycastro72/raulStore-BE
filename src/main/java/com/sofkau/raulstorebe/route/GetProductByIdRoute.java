@@ -1,7 +1,7 @@
 package com.sofkau.raulstorebe.route;
 
-import com.sofkau.raulstorebe.dto.ProductSupplierDTO;
-import com.sofkau.raulstorebe.usecase.GetProductSupplierByIdUseCase;
+import com.sofkau.raulstorebe.dto.ProductDTO;
+import com.sofkau.raulstorebe.usecase.GetProductByIdUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -22,42 +22,41 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 
 @Configuration
-public class GetProductSupplierByIdRoute {
+public class GetProductByIdRoute {
     @Bean
     @RouterOperation(
-            path = "/api/v1/productsupplier/{id}",
+            path = "/api/v1/product/{id}",
             produces = {
                     MediaType.APPLICATION_JSON_VALUE
             },
             method = RequestMethod.GET,
-            beanClass = GetProductSupplierByIdUseCase.class,
+            beanClass = GetProductByIdUseCase.class,
             beanMethod = "apply",
 
             operation = @Operation(
-                    operationId = "getProductSupplierByIdRouter",
+                    operationId = "getProductByIdRouter",
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "successful operation",
                             content = @Content(schema = @Schema(
-                                    implementation = ProductSupplierDTO.class
+                                    implementation = ProductDTO.class
                             ))
                     ), @ApiResponse(
                             responseCode = "404",
-                            description = "Product Supplier ID not found"
+                            description = "Product ID not found"
                     )},
                     parameters = {@Parameter(in = ParameterIn.PATH, name = "id")}
             )
     )
-    public RouterFunction<ServerResponse> getProductSupplierByIdRouter(GetProductSupplierByIdUseCase getProductSupplierByIdUseCase) {
-        return route(GET("/api/v1/productsupplier/{id}"),
+    public RouterFunction<ServerResponse> getProductById(GetProductByIdUseCase getProductByIdUseCase) {
+        return route(GET("/api/v1/product/{id}"),
                 request -> {
-                    return getProductSupplierByIdUseCase.apply(request.pathVariable("id"))
+                    return getProductByIdUseCase.apply(request.pathVariable("id"))
                             .onErrorResume(throwable -> Mono.empty())
-                            .flatMap(productSupplierDTO -> ServerResponse.ok()
+                            .flatMap(productDTO -> ServerResponse.ok()
                                     .contentType(MediaType.APPLICATION_JSON)
-                                    .bodyValue(productSupplierDTO))
+                                    .bodyValue(productDTO))
                             .switchIfEmpty(ServerResponse.status(HttpStatus.NOT_FOUND).build());
                 });
     }
-
 }

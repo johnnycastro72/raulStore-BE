@@ -5,5 +5,5 @@ import reactor.core.publisher.Mono;
 
 @FunctionalInterface
 public interface ICreateProductSupplier {
-    Mono<ProductSupplierDTO> apply (ProductSupplierDTO productSupplierDTO);
+    Mono<ProductSupplierDTO> apply(ProductSupplierDTO productSupplierDTO);
 }

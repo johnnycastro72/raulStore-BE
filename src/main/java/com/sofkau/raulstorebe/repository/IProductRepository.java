@@ -10,8 +10,12 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface IProductRepository extends ReactiveMongoRepository<Product, String> {
     Mono<Product> findByName(String Name);
+
     Flux<Product> findProductsByProductSupplierDTO(ProductSupplierDTO productSupplierDTO);
+
     Flux<Product> findProductsByUnitsIsLessThanEqualAndMinimumUnits();
+
     Flux<Product> findProductsByMaximumUnitsIsGreaterThanAndMaximumUnits();
+
     Flux<Product> findProductsByUnitsIsGreaterThan(Integer units);
 }

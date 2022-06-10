@@ -21,7 +21,7 @@ public class StoreMapper {
                 modelMapper.map(productSupplier, ProductSupplierDTO.class);
     }
 
-    public Function<ProductSupplierDTO, ProductSupplier>  toProductSupplier() {
+    public Function<ProductSupplierDTO, ProductSupplier> toProductSupplier() {
         return productSupplierDTO -> modelMapper.map(productSupplierDTO, ProductSupplier.class);
     }
 
@@ -53,7 +53,7 @@ public class StoreMapper {
         return receiptItem -> modelMapper.map(receiptItem, ReceiptItemDTO.class);
     }
 
-    public Function<ReceiptItemDTO, ReceiptItem>  toReceiptItem() {
+    public Function<ReceiptItemDTO, ReceiptItem> toReceiptItem() {
         return receiptItemDTO -> modelMapper.map(receiptItemDTO, ReceiptItem.class);
     }
 

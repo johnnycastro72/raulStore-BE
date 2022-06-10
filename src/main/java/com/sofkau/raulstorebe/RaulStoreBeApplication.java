@@ -14,6 +14,7 @@ public class RaulStoreBeApplication {
     public static void main(String[] args) {
         SpringApplication.run(RaulStoreBeApplication.class, args);
     }
+
     @Bean
     public StoreMapper StoreMapper() {
         return new StoreMapper();

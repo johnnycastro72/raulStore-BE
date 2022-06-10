@@ -6,5 +6,5 @@ import reactor.core.publisher.Mono;
 
 @FunctionalInterface
 public interface IUpdateProductSupplier {
-    Mono<ProductSupplierDTO> apply (String id, ProductSupplierDTO productSupplierDTO);
+    Mono<ProductSupplierDTO> apply(String id, ProductSupplierDTO productSupplierDTO);
 }
