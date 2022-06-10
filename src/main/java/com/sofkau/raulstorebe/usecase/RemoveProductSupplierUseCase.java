@@ -11,11 +11,10 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class RemoveProductSupplierUseCase implements IRemoveProductSupplier {
 
-    private final IProductSupplierRepository iSupplierRepository;
-    private final StoreMapper storeMapper;
+    private final IProductSupplierRepository iProductSupplierRepository;
 
     @Override
     public Mono<Void> apply(String id) {
-        return null;
+        return iProductSupplierRepository.deleteById(id);
     }
 }
