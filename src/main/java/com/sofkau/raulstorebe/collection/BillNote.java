@@ -1,6 +1,8 @@
 package com.sofkau.raulstorebe.collection;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,12 +12,14 @@ import java.util.List;
 import java.util.UUID;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Document(collection = "billnotes")
 public class BillNote {
     @Id
     private String id;
 
-    private String billId = UUID.randomUUID().toString().substring(0, 5);
+    private String billId;
 
     private LocalDateTime billDate;
 
@@ -24,6 +28,8 @@ public class BillNote {
 
     @NotBlank(message = "Sales person name can't be blank")
     private String salesPerson;
+
+    private Double billTotal;
 
     private List<BillItem> items;
 }

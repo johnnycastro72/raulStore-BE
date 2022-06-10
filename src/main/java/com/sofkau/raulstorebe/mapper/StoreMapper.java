@@ -7,6 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.config.EnableWebFlux;
 
+import java.util.function.Function;
+
 
 @Component
 @EnableWebFlux
@@ -14,52 +16,53 @@ import org.springframework.web.reactive.config.EnableWebFlux;
 public class StoreMapper {
     private static final ModelMapper modelMapper = new ModelMapper();
 
-    public SupplierDTO toCategoryDTO(Supplier supplier) {
-        return modelMapper.map(supplier, SupplierDTO.class);
+    public Function<Supplier, SupplierDTO> toSupplierDTO() {
+        return supplier ->
+                modelMapper.map(supplier, SupplierDTO.class);
     }
 
-    public static Supplier toCollection(SupplierDTO dto) {
-        return modelMapper.map(dto, Supplier.class);
+    public Function<SupplierDTO, Supplier>  toSupplier() {
+        return supplierDTO -> modelMapper.map(supplierDTO, Supplier.class);
     }
 
-    public ProductDTO toProductDTO(Product product) {
-        return modelMapper.map(product, ProductDTO.class);
+    public Function<Product, ProductDTO> toProductDTO() {
+        return product -> modelMapper.map(product, ProductDTO.class);
     }
 
-    public static Product toCollection(ProductDTO dto) {
-        return modelMapper.map(dto, Product.class);
+    public Function<ProductDTO, Product> toProduct() {
+        return productDTO -> modelMapper.map(productDTO, Product.class);
     }
 
-    public BillNoteDTO toBillNoteDTO(BillNote billNote) {
-        return modelMapper.map(billNote, BillNoteDTO.class);
+    public Function<BillNote, BillNoteDTO> toBillNoteDTO() {
+        return billNote -> modelMapper.map(billNote, BillNoteDTO.class);
     }
 
-    public static BillNote toCollection(BillNoteDTO dto) {
-        return modelMapper.map(dto, BillNote.class);
+    public Function<BillNoteDTO, BillNote> toBillNote() {
+        return billNodeDTO -> modelMapper.map(billNodeDTO, BillNote.class);
     }
 
-    public ReceiptNoteDTO toReceiptNoteDTO(ReceiptNote receiptNote) {
-        return modelMapper.map(receiptNote, ReceiptNoteDTO.class);
+    public Function<ReceiptNote, ReceiptNoteDTO> toReceiptNoteDTO() {
+        return receiptNote -> modelMapper.map(receiptNote, ReceiptNoteDTO.class);
     }
 
-    public static ReceiptNote toCollection(ReceiptNoteDTO dto) {
-        return modelMapper.map(dto, ReceiptNote.class);
+    public Function<ReceiptNoteDTO, ReceiptNote> toReceiptNote() {
+        return receiptDTO -> modelMapper.map(receiptDTO, ReceiptNote.class);
     }
 
-    public ReceiptItemDTO toReceiptItemDTO(ReceiptItem receiptItem) {
-        return modelMapper.map(receiptItem, ReceiptItemDTO.class);
+    public Function<ReceiptItem, ReceiptItemDTO> toReceiptItemDTO() {
+        return receiptItem -> modelMapper.map(receiptItem, ReceiptItemDTO.class);
     }
 
-    public static ReceiptItem toCollection(ReceiptItemDTO dto) {
-        return modelMapper.map(dto, ReceiptItem.class);
+    public Function<ReceiptItemDTO, ReceiptItem>  toReceiptItem() {
+        return receiptItemDTO -> modelMapper.map(receiptItemDTO, ReceiptItem.class);
     }
 
-    public BillItemDTO toBillItemDTO(BillItem billItem) {
-        return modelMapper.map(billItem, BillItemDTO.class);
+    public Function<BillItem, BillItemDTO> toBillItemDTO() {
+        return billItem -> modelMapper.map(billItem, BillItemDTO.class);
     }
 
-    public static BillItem toCollection(BillItemDTO dto) {
-        return modelMapper.map(dto, BillItem.class);
+    public Function<BillItemDTO, BillItem> toBillItem() {
+        return billItemDTO -> modelMapper.map(billItemDTO, BillItem.class);
     }
 
 }

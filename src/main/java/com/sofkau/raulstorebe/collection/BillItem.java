@@ -8,11 +8,17 @@ public class BillItem {
     private Integer billQuantity;
     private Double productPrice;
 
-    public BillItem(String productId, String productName, Integer billQuantity, Double productPrice) {
+    private Integer productUnits;
+
+    private Integer productMinimumUnits;
+
+    public BillItem(String productId, String productName, Integer billQuantity, Double productPrice, Integer productUnits, Integer productMinimumUnits) {
         this.productId = productId;
         this.productName = productName;
         this.billQuantity = billQuantity;
         this.productPrice = productPrice;
+        this.productUnits = productUnits;
+        this.productMinimumUnits = productMinimumUnits;
     }
 
     public BillItem() {
@@ -26,7 +32,7 @@ public class BillItem {
         return productName;
     }
 
-    public void setProductName(String productName) {
+    public void changeProductName(String productName) {
         this.productName = productName;
     }
 
@@ -46,6 +52,22 @@ public class BillItem {
         this.productPrice = productPrice;
     }
 
+    public Integer productUnits() {
+        return productUnits;
+    }
+
+    public void changeProductUnits(Integer productUnits) {
+        this.productUnits = productUnits;
+    }
+
+    public Integer productMinimumUnits() {
+        return productMinimumUnits;
+    }
+
+    public void changeProductMinimumUnits(Integer productMinimumUnits) {
+        this.productMinimumUnits = productMinimumUnits;
+    }
+
     @Override
     public String toString() {
         return "BillItem{" +
@@ -53,6 +75,8 @@ public class BillItem {
                 ", productName='" + productName + '\'' +
                 ", billQuantity=" + billQuantity +
                 ", productPrice=" + productPrice +
+                ", productUnits=" + productUnits +
+                ", productMinimumUnits=" + productMinimumUnits +
                 '}';
     }
 
@@ -61,11 +85,11 @@ public class BillItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BillItem billItem = (BillItem) o;
-        return productId.equals(billItem.productId) && productName.equals(billItem.productName) && billQuantity.equals(billItem.billQuantity) && productPrice.equals(billItem.productPrice);
+        return productId.equals(billItem.productId) && productName.equals(billItem.productName) && billQuantity.equals(billItem.billQuantity) && productPrice.equals(billItem.productPrice) && productUnits.equals(billItem.productUnits) && productMinimumUnits.equals(billItem.productMinimumUnits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, productName, billQuantity, productPrice);
+        return Objects.hash(productId, productName, billQuantity, productPrice, productUnits, productMinimumUnits);
     }
 }

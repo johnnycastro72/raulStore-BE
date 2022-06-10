@@ -8,11 +8,17 @@ public class BillItemDTO {
     private Integer billQuantity;
     private Double productPrice;
 
-    public BillItemDTO(String productId, String productName, Integer billQuantity, Double productPrice) {
+    private Integer productUnits;
+
+    private Integer productMinimumUnits;
+
+    public BillItemDTO(String productId, String productName, Integer billQuantity, Double productPrice, Integer productUnits, Integer productMinimumUnits) {
         this.productId = productId;
         this.productName = productName;
         this.billQuantity = billQuantity;
         this.productPrice = productPrice;
+        this.productUnits = productUnits;
+        this.productMinimumUnits = productMinimumUnits;
     }
 
     public BillItemDTO() {
@@ -46,13 +52,31 @@ public class BillItemDTO {
         this.productPrice = productPrice;
     }
 
+    public Integer productUnits() {
+        return productUnits;
+    }
+
+    public void changeProductUnits(Integer productUnits) {
+        this.productUnits = productUnits;
+    }
+
+    public Integer productMinimumUnits() {
+        return productMinimumUnits;
+    }
+
+    public void changeProductMinimumUnits(Integer productMinimumUnits) {
+        this.productMinimumUnits = productMinimumUnits;
+    }
+
     @Override
     public String toString() {
-        return "BillItem{" +
+        return "BillItemDTO{" +
                 "productId='" + productId + '\'' +
                 ", productName='" + productName + '\'' +
                 ", billQuantity=" + billQuantity +
                 ", productPrice=" + productPrice +
+                ", productUnits=" + productUnits +
+                ", productMinimumUnits=" + productMinimumUnits +
                 '}';
     }
 
@@ -60,12 +84,12 @@ public class BillItemDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BillItemDTO billItem = (BillItemDTO) o;
-        return productId.equals(billItem.productId) && productName.equals(billItem.productName) && billQuantity.equals(billItem.billQuantity) && productPrice.equals(billItem.productPrice);
+        BillItemDTO that = (BillItemDTO) o;
+        return productId.equals(that.productId) && productName.equals(that.productName) && billQuantity.equals(that.billQuantity) && productPrice.equals(that.productPrice) && productUnits.equals(that.productUnits) && productMinimumUnits.equals(that.productMinimumUnits);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, productName, billQuantity, productPrice);
+        return Objects.hash(productId, productName, billQuantity, productPrice, productUnits, productMinimumUnits);
     }
 }
