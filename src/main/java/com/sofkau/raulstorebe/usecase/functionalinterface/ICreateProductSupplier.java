@@ -4,6 +4,6 @@ import com.sofkau.raulstorebe.dto.ProductSupplierDTO;
 import reactor.core.publisher.Mono;
 
 @FunctionalInterface
-public interface ICreateSupplier {
+public interface ICreateProductSupplier {
     Mono<ProductSupplierDTO> apply (ProductSupplierDTO productSupplierDTO);
 }

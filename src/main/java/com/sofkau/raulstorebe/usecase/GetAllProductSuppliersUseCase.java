@@ -11,7 +11,7 @@ import java.util.function.Supplier;
 
 @Service
 @AllArgsConstructor
-public class GetAllSuppliersUseCase implements Supplier<Flux<ProductSupplierDTO>> {
+public class GetAllProductSuppliersUseCase implements Supplier<Flux<ProductSupplierDTO>> {
 
     private IProductSupplierRepository iProductSupplierRepository;
     private StoreMapper storeMapper;

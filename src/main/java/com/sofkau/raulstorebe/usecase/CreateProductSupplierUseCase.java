@@ -3,14 +3,14 @@ package com.sofkau.raulstorebe.usecase;
 import com.sofkau.raulstorebe.dto.ProductSupplierDTO;
 import com.sofkau.raulstorebe.mapper.StoreMapper;
 import com.sofkau.raulstorebe.repository.IProductSupplierRepository;
-import com.sofkau.raulstorebe.usecase.functionalinterface.ICreateSupplier;
+import com.sofkau.raulstorebe.usecase.functionalinterface.ICreateProductSupplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
 
-public class CreateSupplierUseCase implements ICreateSupplier {
+public class CreateProductSupplierUseCase implements ICreateProductSupplier {
     @Autowired
     private IProductSupplierRepository iProductSupplierRepository;
 
