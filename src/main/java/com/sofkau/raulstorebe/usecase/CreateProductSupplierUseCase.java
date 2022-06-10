@@ -5,7 +5,6 @@ import com.sofkau.raulstorebe.mapper.StoreMapper;
 import com.sofkau.raulstorebe.repository.IProductSupplierRepository;
 import com.sofkau.raulstorebe.usecase.functionalinterface.ICreateProductSupplier;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 

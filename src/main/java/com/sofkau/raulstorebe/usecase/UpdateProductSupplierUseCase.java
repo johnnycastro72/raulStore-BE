@@ -21,8 +21,10 @@ public class UpdateProductSupplierUseCase implements IUpdateProductSupplier {
         return iProductSupplierRepository.findById(id)
                 .flatMap(productSupplier -> {
                     productSupplierDTO.setId(productSupplier.getId());
-                    return iProductSupplierRepository.save(storeMapper.toProductSupplier().apply(productSupplierDTO))
+                    return iProductSupplierRepository.save(storeMapper.toProductSupplier()
+                                    .apply(productSupplierDTO))
                             .map(productSupplier1 -> storeMapper.toProductSupplierDTO().apply(productSupplier1));
-                }).switchIfEmpty(Mono.just(new ProductSupplierDTO()));
+                })
+                .switchIfEmpty(Mono.just(new ProductSupplierDTO()));
     }
 }
