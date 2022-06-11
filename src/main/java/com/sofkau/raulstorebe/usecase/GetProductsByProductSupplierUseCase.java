@@ -15,14 +15,14 @@ import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-public class GetProductsByProductSupplierUseCase implements Function<ProductSupplierDTO, Flux<ProductDTO>> {
+public class GetProductsByProductSupplierUseCase implements Function<Mono<ProductSupplierDTO>, Flux<ProductDTO>> {
     private final IProductRepository iProductRepository;
     private final StoreMapper storeMapper;
 
     @Override
-    public Flux<ProductDTO> apply(ProductSupplierDTO productSupplierDTO) {
+    public Flux<ProductDTO> apply(Mono<ProductSupplierDTO> monoProductSupplierDTO) {
         return iProductRepository
-                .findProductsByProductSupplierDTO(productSupplierDTO)
+                .findProductsByProductSupplierDTO(monoProductSupplierDTO.block())
                 .onErrorResume(throwable -> {
                     System.out.println(throwable.getStackTrace());
                     return Mono.empty();
