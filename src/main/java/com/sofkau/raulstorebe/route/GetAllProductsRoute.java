@@ -31,7 +31,7 @@ public class GetAllProductsRoute {
                     tags = {"Get All Products"},
                     responses = {@ApiResponse(
                             responseCode = "200",
-                            description = "successful operation",
+                            description = "Successful operation",
                             content = @Content(schema = @Schema(
                                     implementation = ProductDTO.class
                             ))

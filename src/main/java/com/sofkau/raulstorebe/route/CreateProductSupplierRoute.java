@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -31,8 +32,8 @@ public class CreateProductSupplierRoute {
                     operationId = "createProductSupplierRouter",
                     tags = {"Create Product Supplier"},
                     responses = {@ApiResponse(
-                            responseCode = "200",
-                            description = "Successful operation",
+                            responseCode = "201",
+                            description = "Product supplier successfully created",
                             content = @Content(schema = @Schema(
                                     implementation = ProductSupplierDTO.class
                             ))
@@ -48,7 +49,7 @@ public class CreateProductSupplierRoute {
     public RouterFunction<ServerResponse> createProductSupplierRouter(CreateProductSupplierUseCase createProductSupplierUseCase) {
 
         Function<ProductSupplierDTO, Mono<ServerResponse>> executeCreate = productSupplierDTO -> createProductSupplierUseCase.apply(productSupplierDTO)
-                .flatMap(productSupplierDTO1 -> ServerResponse.ok()
+                .flatMap(productSupplierDTO1 -> ServerResponse.status(HttpStatus.CREATED)
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(productSupplierDTO1));
 
