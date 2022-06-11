@@ -22,19 +22,13 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class GetAllProductSuppliersRoute {
     @Bean
     @RouterOperation(
-            path = "/api/v1/productsuppliers",
-            produces = {
-                    MediaType.APPLICATION_JSON_VALUE
-            },
-            method = RequestMethod.GET,
-            beanClass = GetAllProductSuppliersUseCase.class,
-            beanMethod = "get",
 
             operation = @Operation(
                     operationId = "getAllProductSuppliersRouter",
+                    tags = {"Get All Products Supplier"},
                     responses = {@ApiResponse(
                             responseCode = "200",
-                            description = "successful operation",
+                            description = "Successful operation",
                             content = @Content(schema = @Schema(
                                     implementation = ProductSupplierDTO.class
                             ))

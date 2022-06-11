@@ -26,16 +26,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class CreateProductSupplierRoute {
     @Bean
     @RouterOperation(
-            path = "/create/productsupplier",
-            produces = {
-                    MediaType.APPLICATION_JSON_VALUE
-            },
-            method = RequestMethod.POST,
-            beanClass = CreateProductSupplierUseCase.class,
-            beanMethod = "apply",
 
             operation = @Operation(
                     operationId = "createProductSupplierRouter",
+                    tags = {"Create Product Supplier"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Successful operation",

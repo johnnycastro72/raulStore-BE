@@ -13,14 +13,13 @@ import javax.validation.Valid;
 
 @Service
 @RequiredArgsConstructor
-@Validated(ProductDTO.class)
 public class CreateProductUseCase implements ICreateProduct {
 
     private final IProductRepository iProductRepository;
     private final StoreMapper storeMapper;
 
     @Override
-    public Mono<ProductDTO> apply(@Valid ProductDTO productDTO) {
+    public Mono<ProductDTO> apply(ProductDTO productDTO) {
         return iProductRepository
                 .save(storeMapper.toProduct()
                         .apply(productDTO)).map(product -> storeMapper

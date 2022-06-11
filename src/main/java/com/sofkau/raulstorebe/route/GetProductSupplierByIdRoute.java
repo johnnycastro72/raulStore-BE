@@ -25,16 +25,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class GetProductSupplierByIdRoute {
     @Bean
     @RouterOperation(
-            path = "/api/v1/productsupplier/{id}",
-            produces = {
-                    MediaType.APPLICATION_JSON_VALUE
-            },
-            method = RequestMethod.GET,
-            beanClass = GetProductSupplierByIdUseCase.class,
-            beanMethod = "apply",
 
             operation = @Operation(
                     operationId = "getProductSupplierByIdRouter",
+                    tags = {"Get Product Supplier By Id"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "successful operation",

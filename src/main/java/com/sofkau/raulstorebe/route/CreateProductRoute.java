@@ -3,6 +3,8 @@ package com.sofkau.raulstorebe.route;
 import com.sofkau.raulstorebe.dto.ProductDTO;
 import com.sofkau.raulstorebe.usecase.CreateProductUseCase;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -26,16 +28,10 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class CreateProductRoute {
     @Bean
     @RouterOperation(
-            path = "/create/product",
-            produces = {
-                    MediaType.APPLICATION_JSON_VALUE
-            },
-            method = RequestMethod.POST,
-            beanClass = CreateProductUseCase.class,
-            beanMethod = "apply",
 
             operation = @Operation(
                     operationId = "createProductRouter",
+                    tags = {"Create Product"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Successful operation",
@@ -45,21 +41,25 @@ public class CreateProductRoute {
                     ), @ApiResponse(
                             responseCode = "400",
                             description = "Invalid Product details supplied"
-                    )}, requestBody = @RequestBody(
-                    content = @Content(schema = @Schema(
-                            implementation = ProductDTO.class
-                    ))
-            ))
+                    )},
+                    requestBody = @RequestBody(
+                            required = true,
+                            description = "Enter request body as JSON object",
+                            content = @Content(schema = @Schema(
+                                    implementation = ProductDTO.class
+                            ))
+                    )
+            )
     )
     public RouterFunction<ServerResponse> createProductRouter(CreateProductUseCase createProductUseCase) {
 
-        Function<ProductDTO, Mono<ServerResponse>> exexuteCreate = productDTO -> createProductUseCase.apply(productDTO)
+        Function<ProductDTO, Mono<ServerResponse>> executeCreate = productDTO -> createProductUseCase.apply(productDTO)
                 .flatMap(productDTO1 -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(productDTO1));
 
         return route(POST("/create/product")
                 .and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(ProductDTO.class)
-                .flatMap(exexuteCreate));
+                .flatMap(executeCreate));
     }
 }
