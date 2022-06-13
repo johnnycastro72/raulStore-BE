@@ -3,8 +3,6 @@ package com.sofkau.raulstorebe.route;
 import com.sofkau.raulstorebe.dto.ProductDTO;
 import com.sofkau.raulstorebe.usecase.CreateProductUseCase;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
