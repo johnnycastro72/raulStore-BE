@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.util.Objects;
+
 @Service
 @AllArgsConstructor
 public class RemoveProductSupplierUseCase implements IRemoveProductSupplier {
@@ -15,6 +17,7 @@ public class RemoveProductSupplierUseCase implements IRemoveProductSupplier {
 
     @Override
     public Mono<Void> apply(String id) {
+        Objects.requireNonNull(id, "id can't be null");
         return iProductSupplierRepository.deleteById(id);
     }
 }
