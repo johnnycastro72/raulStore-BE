@@ -14,10 +14,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.HandlerFunction;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 
 import static org.springframework.web.reactive.function.server.RequestPredicates.GET;
@@ -26,7 +28,8 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class GetProductsByProductSupplierRoute {
-/*    @Bean
+
+    @Bean
     @RouterOperation(
 
             operation = @Operation(
@@ -52,15 +55,13 @@ public class GetProductsByProductSupplierRoute {
             )
     )
     public RouterFunction<ServerResponse> getProductsByProductSupplierRouter(GetProductsByProductSupplierUseCase getProductsByProductSupplierUseCase) {
-        return route(GET("/api/v1/product/productsupplier")
-                .and(accept(MediaType.APPLICATION_JSON)), request -> {
-            return getProductsByProductSupplierUseCase.apply(request.bodyToMono(ProductSupplierDTO.class))
-                    .onErrorResume(throwable -> Flux.empty())
-                    .flatMap(productDTO -> ServerResponse.ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .bodyValue(productDTO))
-                    .switchIfEmpty(ServerResponse.status(HttpStatus.NO_CONTENT).build());
-        });
-    }*/
+        return route(GET("/api/v1/product/productsupplier"), request ->
+                ServerResponse.ok()
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(BodyInserters.fromPublisher(getProductsByProductSupplierUseCase.apply(request.bodyToMono(ProductSupplierDTO.class)), ProductDTO.class))
+                        .onErrorResume(throwable -> Mono.empty())
+                        .switchIfEmpty(ServerResponse.status(HttpStatus.NO_CONTENT).build())
+        );
+    }
 
 }

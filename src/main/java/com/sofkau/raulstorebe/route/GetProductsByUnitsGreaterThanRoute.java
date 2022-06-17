@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import reactor.core.publisher.Mono;
@@ -22,7 +23,6 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 
 @Configuration
 public class GetProductsByUnitsGreaterThanRoute {
-/*
     @Bean
     @RouterOperation(
 
@@ -39,19 +39,18 @@ public class GetProductsByUnitsGreaterThanRoute {
                             responseCode = "404",
                             description = "Products in stock not found"
                     )},
-                    parameters = {@Parameter(in = ParameterIn.PATH, name="stock")}
+                    parameters = {@Parameter(in = ParameterIn.PATH, name = "stock")}
             )
     )
     public RouterFunction<ServerResponse> getProductsByUnitsGreaterThanRouter(GetProductsByUnitsGreaterThanUseCase getProductsByUnitsGreaterThanUseCase) {
         return route(GET("/api/vq/product/stock/{units}"),
-                request -> {
-            return getProductsByUnitsGreaterThanUseCase.apply(request.pathVariable("units"))
-                    .onErrorResume(throwable -> Mono.empty())
-                    .flatMap(productDTO -> ServerResponse.ok()
+                request ->
+                    ServerResponse.ok()
                             .contentType(MediaType.APPLICATION_JSON)
-                            .bodyValue(productDTO))
-                    .switchIfEmpty(ServerResponse.status(HttpStatus.NO_CONTENT).build());
-                });
+                            .body(BodyInserters.fromPublisher(
+                                    getProductsByUnitsGreaterThanUseCase.apply(request.pathVariable("units")), ProductDTO.class))
+                            .onErrorResume(throwable -> Mono.empty())
+                            .switchIfEmpty(ServerResponse.status(HttpStatus.NO_CONTENT).build())
+                );
     }
-*/
 }
