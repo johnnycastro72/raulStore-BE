@@ -39,7 +39,7 @@ public class GetProductsByUnitsGreaterThanRoute {
                             responseCode = "404",
                             description = "Products in stock not found"
                     )},
-                    parameters = {@Parameter(in = ParameterIn.PATH, name = "stock")}
+                    parameters = {@Parameter(in = ParameterIn.PATH, name = "units")}
             )
     )
     public RouterFunction<ServerResponse> getProductsByUnitsGreaterThanRouter(GetProductsByUnitsGreaterThanUseCase getProductsByUnitsGreaterThanUseCase) {
@@ -49,6 +49,6 @@ public class GetProductsByUnitsGreaterThanRoute {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .body(BodyInserters.fromPublisher(
                                         getProductsByUnitsGreaterThanUseCase
-                                                .apply(request.pathVariable("units")), ProductDTO.class)));
+                                                .apply(Integer.valueOf(request.pathVariable("units"))), ProductDTO.class)));
     }
 }

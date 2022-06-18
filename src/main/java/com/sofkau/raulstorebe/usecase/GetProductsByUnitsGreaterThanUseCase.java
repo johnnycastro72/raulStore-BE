@@ -14,15 +14,15 @@ import java.util.function.Function;
 
 @Service
 @RequiredArgsConstructor
-public class GetProductsByUnitsGreaterThanUseCase implements Function<String, Flux<ProductDTO>> {
+public class GetProductsByUnitsGreaterThanUseCase implements Function<Integer, Flux<ProductDTO>> {
 
     private final IProductRepository iProductRepository;
     private final StoreMapper storeMapper;
 
     @Override
-    public Flux<ProductDTO> apply(String units) {
+    public Flux<ProductDTO> apply(Integer units) {
         return iProductRepository
-                .findProductsByUnitsIsGreaterThan(Integer.valueOf(units))
+                .findProductsByUnitsIsGreaterThan(units)
                 .onErrorResume(throwable -> {
                     System.out.println(Arrays.toString(throwable.getStackTrace()));
                     return Mono.empty();
