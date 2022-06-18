@@ -49,7 +49,7 @@ public class UpdateProductRoute {
             )
     )
     public RouterFunction<ServerResponse> updateProductRouter(UpdateProductUseCase updateProductUseCase) {
-        return route(PUT("/update/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
+        return route(PUT("/api/v1/update/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> request.bodyToMono(ProductDTO.class)
                         .flatMap(productDTO -> updateProductUseCase
                                 .apply(request.pathVariable("id"), productDTO))

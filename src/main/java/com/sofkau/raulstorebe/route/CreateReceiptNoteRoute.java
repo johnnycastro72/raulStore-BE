@@ -56,7 +56,7 @@ public class CreateReceiptNoteRoute {
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(receiptNoteDTO1));
 
-        return route(POST("/create/receiptnote")
+        return route(POST("/api/v1/create/receiptnote")
                 .and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(ReceiptNoteDTO.class)
                 .flatMap(executeCreate));
     }

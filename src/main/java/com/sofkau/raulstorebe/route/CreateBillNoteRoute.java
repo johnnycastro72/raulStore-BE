@@ -58,7 +58,7 @@ public class CreateBillNoteRoute {
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(billNoteDTO1));
 
-        return route(POST("/create/billnote")
+        return route(POST("/api/v1/create/billnote")
                 .and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(BillNoteDTO.class)
                 .flatMap(executeCreate));
     }

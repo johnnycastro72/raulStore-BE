@@ -36,7 +36,7 @@ public class RemoveProductRoute {
             )
     )
     public RouterFunction<ServerResponse> removeProductRouter(RemoveProductUseCase removeProductUseCase) {
-        return route(DELETE("/delete/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
+        return route(DELETE("/api/v1/delete/product/{id}").and(accept(MediaType.APPLICATION_JSON)),
                 request -> ServerResponse.status(HttpStatus.ACCEPTED)
                         .body(BodyInserters
                                 .fromPublisher(removeProductUseCase.apply(request.pathVariable("id")), Void.class)));

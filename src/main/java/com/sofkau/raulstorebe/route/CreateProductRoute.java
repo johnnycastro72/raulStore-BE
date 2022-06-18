@@ -57,7 +57,7 @@ public class CreateProductRoute {
                         .contentType(MediaType.APPLICATION_JSON)
                         .bodyValue(productDTO1));
 
-        return route(POST("/create/product")
+        return route(POST("/api/v1/create/product")
                 .and(accept(MediaType.APPLICATION_JSON)), request -> request.bodyToMono(ProductDTO.class)
                 .flatMap(executeCreate));
     }
