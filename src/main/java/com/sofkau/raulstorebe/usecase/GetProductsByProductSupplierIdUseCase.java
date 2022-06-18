@@ -27,7 +27,7 @@ public class GetProductsByProductSupplierIdUseCase implements Function<String, F
                     System.out.println(throwable.getStackTrace());
                     return Mono.empty();
                 })
-                .switchIfEmpty(Mono.error(() -> new NoSuchElementException()))
+//                .switchIfEmpty(Mono.error(() -> new NoSuchElementException()))
                 .map(product -> storeMapper.toProductDTO().apply(product));
     }
 }
