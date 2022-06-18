@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import org.springdoc.core.annotations.RouterOperation;
 import org.springframework.context.annotation.Bean;
@@ -37,8 +38,12 @@ public class UpdateProductSupplierRoute {
                             responseCode = "404",
                             description = "Product Supplier not found"
                     )},
-                    parameters = @Parameter(in = ParameterIn.PATH, name = "id")
-            )
+                    parameters = @Parameter(in = ParameterIn.PATH, name = "id"),
+                    requestBody = @RequestBody(
+                            content = @Content(schema = @Schema(
+                                    implementation = ProductSupplierDTO.class
+                            ))
+            ))
     )
     public RouterFunction<ServerResponse> updateProductSupplierRouter(UpdateProductSupplierUseCase updateProductSupplierUseCase) {
         return route(PUT("/update/productsupplier/{id}").and(accept(MediaType.APPLICATION_JSON)),

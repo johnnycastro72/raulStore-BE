@@ -43,14 +43,12 @@ public class GetProductsByUnitsGreaterThanRoute {
             )
     )
     public RouterFunction<ServerResponse> getProductsByUnitsGreaterThanRouter(GetProductsByUnitsGreaterThanUseCase getProductsByUnitsGreaterThanUseCase) {
-        return route(GET("/api/vq/product/stock/{units}"),
+        return route(GET("/api/v1/product/stock/{units}"),
                 request ->
-                    ServerResponse.ok()
-                            .contentType(MediaType.APPLICATION_JSON)
-                            .body(BodyInserters.fromPublisher(
-                                    getProductsByUnitsGreaterThanUseCase.apply(request.pathVariable("units")), ProductDTO.class))
-                            .onErrorResume(throwable -> Mono.empty())
-                            .switchIfEmpty(ServerResponse.status(HttpStatus.NO_CONTENT).build())
-                );
+                        ServerResponse.ok()
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .body(BodyInserters.fromPublisher(
+                                        getProductsByUnitsGreaterThanUseCase
+                                                .apply(request.pathVariable("units")), ProductDTO.class)));
     }
 }

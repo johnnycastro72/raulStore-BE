@@ -18,6 +18,7 @@ public class ProductSupplierDTO {
     @NotBlank(message = "Supplier name can't be blank")
     private String supplierName;
 
+    @NotBlank(message = "Supplier phone can't be blank")
     private String supplierPhone;
 
     private String supplierNotes;
