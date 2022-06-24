@@ -26,7 +26,7 @@ public class RemoveProductSupplierRoute {
     @RouterOperation(
             operation = @Operation(
                     operationId = "removeProductSupplierRouter",
-                    tags = {"Remove Product Supplier"},
+                    tags = {"Product Supplier"},
                     responses = {@ApiResponse(
                             responseCode = "202",
                             description = "Product supplier successfully removed"

@@ -28,7 +28,7 @@ public class GetAllProductsRoute {
 
             operation = @Operation(
                     operationId = "getAllProductsRouter",
-                    tags = {"Get All Products"},
+                    tags = {"Product"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Successful operation",

@@ -27,7 +27,7 @@ public class UpdateProductRoute {
     @RouterOperation(
             operation = @Operation(
                     operationId = "updateProductRouter",
-                    tags = {"Update Product"},
+                    tags = {"Product"},
                     responses = {@ApiResponse(
                             responseCode = "201",
                             description = "Product successfully updated",

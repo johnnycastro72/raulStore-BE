@@ -30,7 +30,7 @@ public class GetProductsByProductSupplierRoute {
 
             operation = @Operation(
                     operationId = "getProductsByProductSupplierRouter",
-                    tags = {"Get All Products by Product Supplier"},
+                    tags = {"Product"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Successful operation",

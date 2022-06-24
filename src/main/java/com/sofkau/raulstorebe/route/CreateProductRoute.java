@@ -30,7 +30,7 @@ public class CreateProductRoute {
 
             operation = @Operation(
                     operationId = "createProductRouter",
-                    tags = {"Create Product"},
+                    tags = {"Product"},
                     responses = {@ApiResponse(
                             responseCode = "201",
                             description = "Product Successfully created",

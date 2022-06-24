@@ -28,7 +28,7 @@ public class GetProductsByUnitsGreaterThanRoute {
 
             operation = @Operation(
                     operationId = "getProductsByUnitsGreaterThanRouter",
-                    tags = {"Get products that are in stock"},
+                    tags = {"Product"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Products in stock retrieved",

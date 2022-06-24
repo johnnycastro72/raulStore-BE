@@ -29,7 +29,7 @@ public class CreateReceiptNoteRoute {
 
             operation = @Operation(
                     operationId = "createReceiptNoteRouter",
-                    tags = {"Create Receipt Note"},
+                    tags = {"Receipt Note"},
                     responses = {@ApiResponse(
                             responseCode = "201",
                             description = "Receipt Note Successfully created",
