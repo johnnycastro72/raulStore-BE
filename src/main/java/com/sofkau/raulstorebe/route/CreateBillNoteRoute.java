@@ -31,7 +31,7 @@ public class CreateBillNoteRoute {
 
             operation = @Operation(
                     operationId = "createBillNoteRouter",
-                    tags = {"Create Bill Note"},
+                    tags = {"Bill Note"},
                     responses = {@ApiResponse(
                             responseCode = "201",
                             description = "Bill Note Successfully created",

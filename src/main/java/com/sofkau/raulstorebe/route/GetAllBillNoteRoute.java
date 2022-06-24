@@ -23,7 +23,7 @@ public class GetAllBillNoteRoute {
     @RouterOperation(
             operation = @Operation(
                     operationId = "getAllBillNoteRouter",
-                    tags = {"Get All Bill Notes"},
+                    tags = {"Bill Note"},
                     responses = {@ApiResponse(
                             responseCode = "200",
                             description = "Successful Operation",

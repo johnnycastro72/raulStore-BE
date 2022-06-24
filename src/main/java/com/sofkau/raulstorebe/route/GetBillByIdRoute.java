@@ -27,7 +27,7 @@ public class GetBillByIdRoute {
     @RouterOperation(
         operation = @Operation(
                 operationId = "getBillByIdRouter",
-                tags = {"Get Bill Note By Bill Id"},
+                tags = {"Bill Note"},
                 responses = {@ApiResponse(
                         responseCode = "200",
                         description = "Get Bill Note By Bill Id",
