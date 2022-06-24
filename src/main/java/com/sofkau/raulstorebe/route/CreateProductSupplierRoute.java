@@ -29,6 +29,7 @@ public class CreateProductSupplierRoute {
     @RouterOperation(
 
             operation = @Operation(
+                    description = "Create a Product Supplier",
                     operationId = "createProductSupplierRouter",
                     tags = {"Product Supplier"},
                     responses = {@ApiResponse(

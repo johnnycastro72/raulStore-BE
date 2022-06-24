@@ -27,6 +27,7 @@ public class GetProductSupplierByIdRoute {
     @RouterOperation(
 
             operation = @Operation(
+                    description = "Get a Product Supplier By Id",
                     operationId = "getProductSupplierByIdRouter",
                     tags = {"Product Supplier"},
                     responses = {@ApiResponse(

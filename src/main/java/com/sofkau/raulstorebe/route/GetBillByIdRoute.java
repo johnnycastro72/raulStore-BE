@@ -26,6 +26,7 @@ public class GetBillByIdRoute {
     @Bean
     @RouterOperation(
         operation = @Operation(
+                description = "Get All Bill By Id",
                 operationId = "getBillByIdRouter",
                 tags = {"Bill Note"},
                 responses = {@ApiResponse(

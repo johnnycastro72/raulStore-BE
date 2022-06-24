@@ -24,6 +24,7 @@ public class GetAllReceiptNoteRoute {
     @Bean
     @RouterOperation(
             operation = @Operation(
+                    description = "Get All Receipt Notes",
                     operationId = "getAllReceiptNoteRouter",
                     tags = {"Receipt Note"},
                     responses = {@ApiResponse(

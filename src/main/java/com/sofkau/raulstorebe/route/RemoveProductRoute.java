@@ -23,6 +23,7 @@ public class RemoveProductRoute {
     @Bean
     @RouterOperation(
             operation = @Operation(
+                    description = "Remove a Product By Id",
                     operationId = "removeProductRouter",
                     tags = {"Product"},
                     responses = {@ApiResponse(

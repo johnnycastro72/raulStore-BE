@@ -28,6 +28,7 @@ public class CreateReceiptNoteRoute {
     @RouterOperation(
 
             operation = @Operation(
+                    description = "Create a Receipt Note",
                     operationId = "createReceiptNoteRouter",
                     tags = {"Receipt Note"},
                     responses = {@ApiResponse(

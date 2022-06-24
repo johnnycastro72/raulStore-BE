@@ -23,6 +23,7 @@ public class GetAllProductSuppliersRoute {
     @RouterOperation(
 
             operation = @Operation(
+                    description = "Get All Product Suppliers",
                     operationId = "getAllProductSuppliersRouter",
                     tags = {"Product Supplier"},
                     responses = {@ApiResponse(

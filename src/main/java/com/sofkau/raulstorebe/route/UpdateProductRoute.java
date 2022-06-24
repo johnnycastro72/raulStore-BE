@@ -26,6 +26,7 @@ public class UpdateProductRoute {
     @Bean
     @RouterOperation(
             operation = @Operation(
+                    description = "Update a Product",
                     operationId = "updateProductRouter",
                     tags = {"Product"},
                     responses = {@ApiResponse(

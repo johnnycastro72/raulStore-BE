@@ -27,6 +27,7 @@ public class GetProductsByUnitsGreaterThanRoute {
     @RouterOperation(
 
             operation = @Operation(
+                    description = "Get All Products By Units Greater Than",
                     operationId = "getProductsByUnitsGreaterThanRouter",
                     tags = {"Product"},
                     responses = {@ApiResponse(

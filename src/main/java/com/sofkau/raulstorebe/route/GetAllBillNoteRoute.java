@@ -22,6 +22,7 @@ public class GetAllBillNoteRoute {
     @Bean
     @RouterOperation(
             operation = @Operation(
+                    description = "Get All Bill Notes",
                     operationId = "getAllBillNoteRouter",
                     tags = {"Bill Note"},
                     responses = {@ApiResponse(

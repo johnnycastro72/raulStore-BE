@@ -25,6 +25,7 @@ public class RemoveProductSupplierRoute {
     @Bean
     @RouterOperation(
             operation = @Operation(
+                    description = "Remove a Product Supplier By Id",
                     operationId = "removeProductSupplierRouter",
                     tags = {"Product Supplier"},
                     responses = {@ApiResponse(
